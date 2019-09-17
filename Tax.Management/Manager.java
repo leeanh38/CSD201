@@ -36,6 +36,13 @@ public class Manager{
     
     public static void inputAndAdd(MyList list,String type){
         double tax;
+        int position = 0;
+        
+        if(type.equalsIgnoreCase("AfterPosition")){
+            position = (int)Validation.checkInputNodeLimit(list,1,list.length());
+            if(position == -1)
+                return;
+        }
         //tempt user to input
         while(true){
             System.out.print("Enter code: ");
@@ -68,8 +75,7 @@ public class Manager{
             }
             //Type afterPosition: add after position k
             else if(type.equalsIgnoreCase("AfterPosition")){
-                int k = (int)Validation.checkInputNodeLimit(list,1,list.length());
-                list.addAfterPosition(new TaxPayer(code,name,income,deduct,tax),k);
+                list.addAfterPosition(new TaxPayer(code,name,income,deduct,tax),position);
                 System.err.println("<Tax payer is successfully added>");
             }
             break;
@@ -81,7 +87,7 @@ public class Manager{
             System.err.println("<Empty list>");
         }
         else{
-            System.out.println("Code|Name                |Income    |Deduction |Tax       ");
+            System.out.println("Code |Name                |Income    |Deduction |Tax       ");
             System.out.println("----------------------------------------------------------");
             list.display();
         }
