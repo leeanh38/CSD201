@@ -1,1 +1,70 @@
+DSA - Assignment 1
+Income Tax calculator
+using linked list data structure
+As your first assignment this semester, you are to write a Java program that calculates the income tax . 
+Learning Outcome
+Upon successful completion of this assignment, you will have demonstrated the ability to apply linked list to a practical problem.
 
+Introduction
+From 2009, people in the Strange country must pay income tax depended on the total amount he/she earns. Income tax is the kind of progress tax, which applies higher tax rates to individuals posting higher earnings.
+Firstly, taxable income is identified. Taxable income is calculated by deducting deduction from income.
+Then, taxable income is multiplied by the tax rate of according brackets you belong in. 
+Here, three tax brackets:
+
+taxable income of 5000 USD or less attracts tax at
+      5%
+
+taxable income of more than 5000 USD and not more than 10000 USD attracts tax at 10%.
+taxable income of more than 10000 USD attracts tax at
+      15%. 
+
+Specifications
+You should use linked list to store data for taxpayers in a company. You should create a linked list from scratch, do not use list structures available in java Data like ArrayList, Vector or LinkedList classes. The items for a taxpayer are:
+
+The code of the taxpayer (this should be unique for the taxpayer).
+The name of the taxpayer.
+The income earned by the taxpayer (should be positive).
+The deduction amount (should be non-negative and less than income).
+The tax  to pay (calculated from income and deduction).
+Thus your application should contain the class like:
+class TaxPayer
+{String code,name;
+double income,deduct,tax;
+...
+}
+On running, your program displays the menu as below:
+
+            
+
+Submission Requirements
+Create the directory with a name like <class>-<name><roll number>-ASS1, e.g.
+            SE0412-QuangTV00456-ASS1                     (1)
+The (1) directory contains the following files:
+
+The run.bat  file to run your program.
+Your source code files.
+Your input test files.
+The statements in run.bat file may be:
+cls
+javac Main.java
+java Main
+pause
+del *.class
+
+Compress the folder   (1)  to .zip (or .rar) file (with the same name) and upload to cms.
+
+Assignment assessment
+You will be asked to modify immediately and to explain your assignment in lab room to be sure that you are really the author  of the assignment you submitted.
+
+Note: At the beginning of your program, include comments reflecting accurate information for you in the format as below:
+
+/*
+ Assignment 1  - Income tax
+ Class ID          : DSABiss3
+ Student ID        : 0023
+ Student Name      : Nguyễn Minh Đức
+ Due Date          : 22 November 2009
+ I declare that this assignment is my own work
+ in accordance with FPT Policy.
+*/
+ 
