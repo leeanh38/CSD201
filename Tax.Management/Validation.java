@@ -42,6 +42,19 @@ public class Validation {
         }
     }
     
+    public static boolean checkInputYN(){
+        String result = checkInputString();
+        
+        while(true){
+            if(result.equalsIgnoreCase("Y")) return true;
+            else if(result.equalsIgnoreCase("N")) return false;
+            else{
+                System.err.println("Please enter only y/Y(Yes) or n/N(No)");
+                System.out.print("Enter again: ");
+            }
+        }
+    }
+    
     //Kiểm tra và trả về input nếu là số dương
     public static double checkInputDoublePositive(double bottom){
         while(true){
@@ -73,12 +86,19 @@ public class Validation {
     
     //Kiểm tra input position có hợp lệ với linked list không 
     public static int checkInputNodeLimit(MyList list, int min, int max){
-        //Case 1: list có 1 node
-        if(min == 1 && max == 1)
+        //Case 1: list rỗng
+        if(min != 0 && max == 0){
+            System.err.println("Empty list. There must be an existing taxpayer to add after position.");
+            System.out.print("Do you want to add a tax payer (y/Y for yes, n/N for no):  ");
+            if(checkInputYN()) return 0;
+            else return -1;
+        }
+        //Case 2: list có 1 node
+        else if(min == 1 && max == 1)
             System.err.println("The only available position is 1!");
-        //Case 2: list có hơn 1 node
+        //Case 3: list có hơn 1 node
         else 
-            System.err.println("\nAvailable positions [" + min + "-" + max + "]");
+            System.err.println("Available positions [" + min + "-" + max + "]");
         
         //Người dùng nhập input vào
         //Kiểm tra, bắt người dùng nhập lại input nếu không hợp lệ
