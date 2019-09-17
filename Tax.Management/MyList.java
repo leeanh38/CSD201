@@ -60,7 +60,13 @@ public class MyList {
         Node q = new Node(x,null);
         int count = 1;
         //If list is empty, add the node at position 0
-        while(currNode != null){ 
+        if(position == -1){            
+        }
+        else if(position == 0){
+            head = tail = new Node(x,null);
+        }
+        else{
+            while(currNode != null){ 
             nextNode = currNode.next;
             //If the position is after tail(max), add at end
             if(currNode != null && nextNode == null){
@@ -76,6 +82,7 @@ public class MyList {
             }
             currNode = currNode.next;
             count++;
+            }
         }                       
     }
     
