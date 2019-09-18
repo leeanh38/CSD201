@@ -29,9 +29,15 @@ public class MyList {
     public boolean isEmpty(){
         return (head == null);
     }
-
-    public void clear(){
-        head = tail = null;
+      
+    public int length(){
+        Node currNode = head;
+        int count = 0;
+        while(currNode!=null){
+            count++;
+            currNode = currNode.next;
+        }
+        return count;
     }
 
     public void addToEnd(TaxPayer x){
@@ -41,6 +47,75 @@ public class MyList {
             Node q = new Node(x,null);
             tail.next = q;
             tail = q;
+        }
+    }
+    
+    public void display(){
+        Node p = head;
+        while(p != null){
+            p.info.print();
+            p = p.next;
+        }
+    }
+    
+    public TaxPayer search(String code){
+        Node currNode = head;
+        while(currNode != null){
+            if(currNode.info.getCode().equalsIgnoreCase(code)) return currNode.info; 
+            currNode = currNode.next;
+        }
+        return null;
+    }
+    public boolean checkExistCode(MyList list, String code){
+        Node p = head;
+        while(p != null){
+            if(p.info.getCode().equalsIgnoreCase(code)) return true;
+            p = p.next;
+        }
+        return false;
+    }
+    
+    public void delete(String code){
+        Node prevNode = null;
+        Node currNode = head;
+        //Case 1: not found key        
+        if(currNode == null){
+            System.err.println("<" + code + " not found>");
+        }
+        //Case 2: if head node holds the code
+        else if(currNode != null && currNode.info.getCode().equalsIgnoreCase(code)){
+            head = currNode.next;
+            System.err.println("<" + code + " found and deleted>");
+        }   
+        //Case 3: somewhere among the list
+        else{
+            //Search for the key to be deleted
+            //keep track of the previous
+            //as it is needed to change currNode.next
+            while(currNode != null && !currNode.info.getCode().equalsIgnoreCase(code)){
+                prevNode = currNode;
+                currNode = currNode.next;
+            }           
+            //If the key was present, it should be at currNode
+            //Therefore the currNode shall not be null
+            if(currNode != null){
+                //Since the key is at currNode
+                //Unlink currNode from linked list
+                prevNode.next = currNode.next;
+                System.err.println("<" + code + " found and deleted>");
+            }
+        }
+    }
+    
+    public void sortCode(){
+        for(Node m = head; m != null; m = m.next){
+            for(Node n = m.next; n != null;n = n.next){
+                if(n.info.getCode().compareToIgnoreCase(m.info.getCode()) < 0){
+                    TaxPayer swap = m.info;
+                    m.info = n.info;
+                    n.info = swap;
+                }
+            }
         }
     }
     
@@ -118,98 +193,5 @@ public class MyList {
             }
         }
     }
-
-    public void display(){
-        Node p = head;
-        while(p != null){
-            p.info.print();
-            p = p.next;
-        }
-    }
-    
-    public boolean checkExistCode(MyList list, String code){
-        Node p = head;
-        while(p != null){
-            if(p.info.getCode().equalsIgnoreCase(code)) return true;
-            p = p.next;
-        }
-        return false;
-    }
-    
-    public TaxPayer search(String code){
-        Node currNode = head;
-        while(currNode != null){
-            if(currNode.info.getCode().equalsIgnoreCase(code)) return currNode.info; 
-            currNode = currNode.next;
-        }
-        return null;
-    }
-    
-    public int length(){
-        Node currNode = head;
-        int count = 0;
-        while(currNode!=null){
-            count++;
-            currNode = currNode.next;
-        }
-        return count;
-    }
-    
-    public void delete(String code){
-        Node prevNode = null;
-        Node currNode = head;
-        //Case 1: not found key        
-        if(currNode == null){
-            System.err.println("<" + code + " not found>");
-        }
-        //Case 2: if head node holds the code
-        else if(currNode != null && currNode.info.getCode().equalsIgnoreCase(code)){
-            head = currNode.next;
-            System.err.println("<" + code + " found and deleted>");
-        }   
-        //Case 3: somewhere among the list
-        else{
-            //Search for the key to be deleted
-            //keep track of the previous
-            //as it is needed to change currNode.next
-            while(currNode != null && !currNode.info.getCode().equalsIgnoreCase(code)){
-                prevNode = currNode;
-                currNode = currNode.next;
-            }           
-            //If the key was present, it should be at currNode
-            //Therefore the currNode shall not be null
-            if(currNode != null){
-                //Since the key is at currNode
-                //Unlink currNode from linked list
-                prevNode.next = currNode.next;
-                System.err.println("<" + code + " found and deleted>");
-            }
-        }
-    }
-
-    public void sortCode(){
-        Node nextNode;
-        Node currNode = head;
-        TaxPayer temp;
-        
-        if(head == null){
-        }
-        else{
-            while(currNode != null){
-                //Node index will point to node next to current
-                nextNode = currNode.next;
-                
-                while(nextNode != null){
-                    //if current node's data is greater than index's node data,swap data
-                    if(currNode.info.getCode().compareTo(nextNode.info.getCode()) == 1){
-                        temp = currNode.info;
-                        currNode.info = nextNode.info;
-                        nextNode.info = temp;
-                    }
-                    nextNode = nextNode.next;
-                }
-                currNode = currNode.next;
-            }
-        }
-    }
 }
+
