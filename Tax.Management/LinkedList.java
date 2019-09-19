@@ -9,7 +9,7 @@ package csd_tax;
  *
  * @author ASUS
  */
-public class MyList {
+public class LinkedList {
     class Node{
         TaxPayer info;
         Node next;
@@ -66,7 +66,7 @@ public class MyList {
         }
         return null;
     }
-    public boolean checkExistCode(MyList list, String code){
+    public boolean checkExistCode(LinkedList list, String code){
         Node p = head;
         while(p != null){
             if(p.info.getCode().equalsIgnoreCase(code)) return true;
@@ -135,30 +135,31 @@ public class MyList {
         Node q = new Node(x,null);
         int count = 1;
         //If list is empty, add the node at position 0
-        if(position == -1){            
-        }
-        else if(position == 0){
-            head = tail = new Node(x,null);
-        }
-        else{
-            while(currNode != null){ 
-            nextNode = currNode.next;
-            //If the position is after tail(max), add at end
-            if(currNode != null && nextNode == null){
-                tail.next = q;
-                tail = q;
+        switch (position) {
+            case -1:
                 break;
-            }
-            //If the position is between min and max, add after the position
-            if(count == position){
-                currNode.next = q;
-                q.next = nextNode ;
+            case 0:
+                head = tail = new Node(x,null);
                 break;
-            }
-            currNode = currNode.next;
-            count++;
-            }
-        }                       
+            default:
+                while(currNode != null){
+                    nextNode = currNode.next;
+                    //If the position is after tail(max), add at end
+                    if(currNode != null && nextNode == null){                       
+                        tail.next = q;
+                        tail = q;
+                        break;
+                    }
+                    //If the position is between min and max, add after the position
+                    if(count == position){
+                        currNode.next = q;
+                        q.next = nextNode ;
+                        break;
+                    }
+                    currNode = currNode.next;
+                    count++;
+                }   break;
+        }
     }
     
     public void deleteByPosition(int position){
@@ -194,4 +195,3 @@ public class MyList {
         }
     }
 }
-
