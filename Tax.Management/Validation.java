@@ -85,7 +85,7 @@ public class Validation {
     }
     
     //Kiểm tra input position có hợp lệ với linked list không 
-    public static int checkInputNodeLimit(MyList list, int min, int max){
+    public static int checkInputNodeLimit(LinkedList list, int min, int max){
         //Case 1: list rỗng
         if(min != 0 && max == 0){
             System.err.println("Empty list. There must be an existing taxpayer to add after position.");
