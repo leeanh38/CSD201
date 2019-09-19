@@ -13,12 +13,16 @@ package csd_tax;
  */
 public class Main {
     public static void main(String[] args) {
-        MyList list = new MyList(); 
-        //add a few nodes for test case
+        LinkedList list = new LinkedList(); 
+//        add a few nodes for test case
         list.addToEnd(new TaxPayer("B612","Viet Nguyen",12000,5000,200));
-        list.addToEnd(new TaxPayer("AA13","Bach CX",15000,5000,200));
+        list.addToEnd(new TaxPayer("AA13","Muhammed Abach",15000,5000,200));
         list.addToEnd(new TaxPayer("B514","Viet Nho",12000,5000,200));
-        list.addToEnd(new TaxPayer("D615","Lam Tung",12000,5000,200));
+        list.addToEnd(new TaxPayer("D615","Mutafa Lam",12000,5000,200));
+        list.addToEnd(new TaxPayer("612D","John Tron",12000,5000,200));
+        list.addToEnd(new TaxPayer("A113","French Kiwi Juice",15000,5000,200));
+        list.addToEnd(new TaxPayer("11D4","Masego",12000,5000,200));
+        list.addToEnd(new TaxPayer("1423","Phum Viphurit",12000,5000,200));
         
         while(true){
             Manager.menu();
