@@ -34,7 +34,7 @@ public class Manager{
         
     }
     
-    public static void inputAndAdd(MyList list,String type){
+    public static void inputAndAdd(LinkedList list,String type){
         double tax;
         int position = 0;
         
@@ -82,7 +82,7 @@ public class Manager{
         }
     }
     
-    public static void displayData(MyList list){
+    public static void displayData(LinkedList list){
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
@@ -93,11 +93,11 @@ public class Manager{
         }
     }
     
-    public static void saveDataToFile(MyList list){
+    public static void saveDataToFile(LinkedList list){
         
     }
     
-    public static void searchByCode(MyList list){
+    public static void searchByCode(LinkedList list){
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
@@ -110,7 +110,7 @@ public class Manager{
         }
     }
     
-    public static void deleteByCode(MyList list){
+    public static void deleteByCode(LinkedList list){
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
@@ -121,7 +121,7 @@ public class Manager{
         }
     }
     
-    public static void sortByCode(MyList list){      
+    public static void sortByCode(LinkedList list){      
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
@@ -133,7 +133,7 @@ public class Manager{
         }
     }
     
-    public static void deletePosition(MyList list){
+    public static void deletePosition(LinkedList list){
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
