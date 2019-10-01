@@ -43,14 +43,15 @@ public class Validation {
     }
     
     public static boolean checkInputYN(){
+        while(true){
         String result = checkInputString();
         
-        while(true){
             if(result.equalsIgnoreCase("Y")) return true;
             else if(result.equalsIgnoreCase("N")) return false;
             else{
                 System.err.println("Please enter only y/Y(Yes) or n/N(No)");
                 System.out.print("Enter again: ");
+                
             }
         }
     }
