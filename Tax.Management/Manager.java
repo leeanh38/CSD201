@@ -5,6 +5,11 @@
  */
 package csd_tax;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
 
 /**
  *
@@ -12,8 +17,9 @@ package csd_tax;
  */
 
 public class Manager{
+    TextFile text= new TextFile();
     
-    public static void menu(){
+    public void menu(){
         System.out.println("\n________________________________");
         System.out.println("TAX PAYER MANAGEMENT MENU:");
         System.out.println(" 1.  Load data from file");
@@ -30,11 +36,23 @@ public class Manager{
         System.out.print("     Your selection (0 -> 10): ");
     }
     
-    public static void loadDataFromFile(){
-        
+    public void loadDataFromFile(LinkedList list){
+        while(true){
+            try {
+                System.out.print("Enter the file name to load data : ");
+                Scanner sc = new Scanner(System.in);
+                String nameFile = sc.nextLine().trim();
+                text.inputFile(list,nameFile);
+                break;
+            } catch (FileNotFoundException ex) {
+                System.err.println("<Your file doesn't exist.>");
+                System.out.print("Do you want to continue ? (y/Y or n/N): ");
+                if(!Validation.checkInputYN()) break;
+            }
+        }
     }
     
-    public static void inputAndAdd(LinkedList list,String type){
+    public void inputAndAdd(LinkedList list,String type){
         double tax;
         int position = 0;
         
@@ -82,7 +100,7 @@ public class Manager{
         }
     }
     
-    public static void displayData(LinkedList list){
+    public void displayData(LinkedList list){
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
@@ -92,12 +110,37 @@ public class Manager{
             list.display();
         }
     }
-    
-    public static void saveDataToFile(LinkedList list){
-        
+
+    public void saveDataToFile(LinkedList list) throws IOException{
+        while(true){
+            System.err.println("Do you want to create a new save file?(Y/N)");
+            boolean answer =Validation.checkInputYN();
+            System.out.print("Enter the file name to save data : ");
+            Scanner sc = new Scanner(System.in);
+            String nameFile = sc.nextLine().trim();
+            if(answer){
+                    File file = new File(nameFile);
+                    if (file.createNewFile()){
+                        System.err.println("<File is created>");
+                        text.outputFile(list,nameFile);
+                        break; 
+                    }
+                    else{
+                        System.err.println("<File already exists!>");
+                    }
+            }
+            else{
+                try{
+                    text.outputFile(list,nameFile);
+                    break;
+                }
+                catch(Exception e){
+                    System.err.println("<Your file doesn't exist. Please re-input!>");
+                }
+        }
     }
-    
-    public static void searchByCode(LinkedList list){
+    }
+    public void searchByCode(LinkedList list){
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
@@ -110,7 +153,7 @@ public class Manager{
         }
     }
     
-    public static void deleteByCode(LinkedList list){
+    public void deleteByCode(LinkedList list){
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
@@ -121,7 +164,7 @@ public class Manager{
         }
     }
     
-    public static void sortByCode(LinkedList list){      
+    public void sortByCode(LinkedList list){      
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
@@ -133,7 +176,7 @@ public class Manager{
         }
     }
     
-    public static void deletePosition(LinkedList list){
+    public void deletePosition(LinkedList list){
         if(list.isEmpty()){
             System.err.println("<Empty list>");
         }
