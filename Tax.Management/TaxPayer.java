@@ -69,10 +69,12 @@ public class TaxPayer{
     
     @Override
     public String toString(){
-        return "Name: " + name
+        return    "Code: "    + code
+                + "\nName: " + name
                 + "\nIncome: " + income
-                + "\nDeduction: " + deduct
-                + "\nTax: " + tax;
+                + "\nDeduct: " + deduct
+                + "\nTax: " + tax
+                +"\n";
     }
     
     public void print(){
