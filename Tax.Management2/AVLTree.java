@@ -173,49 +173,6 @@ public class AVLTree{
         return node;
     }
 	    
-//    Node delete(Node node, String key){
-//        if(node == null){
-//            System.err.println("<Code "+key+" not found>");
-//            return node;
-//        }
-//        if(node.key.getCode().compareToIgnoreCase(key) > 0){
-//            node.left = delete(node.left, key);
-//        }
-//        if(node.key.getCode().compareToIgnoreCase(key) < 0){
-//            node.right = delete(node.right, key);
-//        }
-//        else{
-//            if(node.right == null)
-//                return node.left;
-//            if(node.left == null)
-//                return node.right;
-////            node.key = minValueNode(node.right).key;
-//            else{
-//                TaxPayer inorderSuccessorValue = getMinValue(node.right);
-//                node.key = inorderSuccessorValue;
-//                node.right = delete(node.right, inorderSuccessorValue.getCode());
-//            }
-//        }
-//        node.height = 1 + max(height(node.left),height(node.right)); 
-//  
-//        int balance = getBalance(node); 
-//        if (balance > 1 && key.compareToIgnoreCase(node.left.key.getCode()) < 0) 
-//            return rightRotate(node);
-//        
-//        if (balance < -1 && key.compareToIgnoreCase(node.right.key.getCode()) > 0) 
-//            return leftRotate(node);
-//        
-//        if (balance > 1 && key.compareToIgnoreCase(node.left.key.getCode()) > 0) { 
-//            node.left = leftRotate(node.left); 
-//            return rightRotate(node); 
-//        } 
-//        
-//        if (balance < -1 && key.compareToIgnoreCase(node.right.key.getCode()) < 0) { 
-//            node.right = rightRotate(node.right); 
-//            return leftRotate(node); 
-//        } 
-//        return node;
-//    }
     void inOrder()
     {
         inOrder(root);
